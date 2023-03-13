@@ -1,6 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.Classes;
 
-public class Carro {
+public class carro {
     int idCarro;
     String modelo;
     String cor;
