@@ -1,5 +1,5 @@
 package com.AlugaMeCar.AlugaMeCar.Classes;
 
-public class pessoa {
+public class Pessoa {
     //teste
 }
