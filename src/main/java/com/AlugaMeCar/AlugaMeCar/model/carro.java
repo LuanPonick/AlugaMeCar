@@ -1,4 +1,4 @@
-package com.AlugaMeCar.AlugaMeCar.Classes;
+package com.AlugaMeCar.AlugaMeCar.model;
 
 public class carro {
     int idCarro;
