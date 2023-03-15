@@ -1,11 +1,13 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cliente {
    @Id
    private int idCliente;
@@ -16,5 +18,16 @@ public class Cliente {
    private String senha;
    private String telefone;
 
-
+   @Override
+   public String toString() {
+      return "Cliente{" +
+              "idCliente=" + idCliente +
+              ", nome='" + nome + '\'' +
+              ", sobrenome='" + sobrenome + '\'' +
+              ", data_nascimento='" + data_nascimento + '\'' +
+              ", email='" + email + '\'' +
+              ", senha='" + senha + '\'' +
+              ", telefone='" + telefone + '\'' +
+              '}';
+   }
 }

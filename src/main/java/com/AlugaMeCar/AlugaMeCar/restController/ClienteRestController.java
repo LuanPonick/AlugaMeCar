@@ -1,4 +1,4 @@
-package controller;
+package com.AlugaMeCar.AlugaMeCar.restController;
 
 
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
@@ -9,12 +9,13 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/cliente")
-public class controller {
+public class ClienteRestController {
     public HashMap<Integer, Cliente> clientes = new HashMap<Integer, Cliente>();
 
     @PostMapping("/cliente")
     public Cliente adicionarCliente(@RequestBody Cliente c){
         clientes.put(c.getIdCliente(), c);
+        c.toString();
         return c;
     }
 

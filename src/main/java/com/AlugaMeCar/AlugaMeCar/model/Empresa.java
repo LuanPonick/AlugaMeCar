@@ -4,5 +4,6 @@ public class Empresa {
     int idEmpresa;
     int idcarro;
     int idCliente;
+    String telefone;
 
 }
