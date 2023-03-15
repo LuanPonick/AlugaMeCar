@@ -1,5 +1,10 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Cliente {
     int idCliente;
     String nome;
@@ -7,5 +12,5 @@ public class Cliente {
     String data_nascimento;
     String email;
     String senha;
-
+    String telefone;
 }
