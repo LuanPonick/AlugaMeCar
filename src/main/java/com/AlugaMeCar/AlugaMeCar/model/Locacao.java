@@ -1,11 +1,19 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Locacao {
-    int IdLocacao;
-    int IdCliente;
-    int IdCarro;
-    String Data_Retirada;
-    String Data_Devolucao;
-    String Local_Retirada;
-    String Local_Devolucao;
+    @Id
+    Long idLocacao;
+    @ManyToOne
+    Cliente cliente;
+    @OneToOne
+    Carro carro;
+
+    @Column(name = "Data_Retirada")
+    String dataRetirada;
+    String dataDevolucao;
+    String localRetirada;
+    String localDevolucao;
 }
