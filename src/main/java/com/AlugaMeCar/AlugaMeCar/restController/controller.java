@@ -1,4 +1,4 @@
-package controller;
+package com.AlugaMeCar.AlugaMeCar.restController;
 
 
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
