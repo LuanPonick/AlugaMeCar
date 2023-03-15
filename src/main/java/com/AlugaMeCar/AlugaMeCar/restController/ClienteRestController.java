@@ -2,35 +2,57 @@ package com.AlugaMeCar.AlugaMeCar.restController;
 
 
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
+import com.AlugaMeCar.AlugaMeCar.repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/api/clientes")
 public class ClienteRestController {
-    public HashMap<Integer, Cliente> clientes = new HashMap<Integer, Cliente>();
-
-    @PostMapping("/cliente")
-    public Cliente adicionarCliente(@RequestBody Cliente c){
-        clientes.put(c.getIdCliente(), c);
-        c.toString();
-        return c;
+    @Autowired
+    private ClienteRepository clienteRepository;
+//    @GetMapping
+//    public List<Cliente> listarClientes() {
+//        return cliente.listarClientes();
+//    }
+    @GetMapping("/{idCliente}")
+    public ResponseEntity<Cliente> buscarCliente(@PathVariable Long idCliente) {
+        Optional<Cliente> clientes = clienteRepository.findById(idCliente);
+        if (clientes.isPresent()) {
+            return ResponseEntity.ok(clientes.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
-    @GetMapping("/cliente")
-    public Collection<Cliente> verTodos(){
-        return clientes.values();
+    @PostMapping("/")
+    public ResponseEntity<Cliente> adicionarCliente(@RequestBody Cliente cliente) {
+        Cliente novoCliente = clienteRepository.save(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
     }
-
-    @PutMapping("/cliente/{idCliente}")
-    public Cliente autualizaCliente(@PathVariable("idCliente") int idCliente, @RequestBody Cliente c){
-        return clientes.put(idCliente, c);
+    @PutMapping("/{idCliente}")
+    public ResponseEntity<Cliente> autualizarCliente(@PathVariable Cliente cliente) {
+        boolean clienteTrocado = false;
+        if (cliente.getIdCliente() > 0){
+            Cliente clienteAutualizar = clienteRepository.save(cliente);
+            clienteTrocado = true;
+        }
+        if (clienteTrocado) {
+            return ResponseEntity.ok(cliente);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
-    @DeleteMapping("/cliente/{idCliente}")
-    public Cliente deletarCliente(@PathVariable("idCliente") int idCliente){
-        return clientes.remove(idCliente);
+    @DeleteMapping("/{idCliente}")
+    public ResponseEntity<Void> removerCliente(@PathVariable Long idCliente){
+        boolean clienteRemovido = clienteRepository.findAll().remove(idCliente);
+        if (clienteRemovido) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
