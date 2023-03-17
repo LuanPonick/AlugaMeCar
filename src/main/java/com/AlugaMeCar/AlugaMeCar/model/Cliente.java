@@ -1,20 +1,16 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Cliente {
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long idCliente;
+   private int idCliente;
    private String nome;
    private String sobrenome;
    private String data_nascimento;
@@ -22,8 +18,6 @@ public class Cliente {
    private String senha;
    private String telefone;
 
-   @OneToMany
-   private List<Locacao> locacoes;
    @Override
    public String toString() {
       return "Cliente{" +

@@ -1,3 +1,4 @@
+
 package com.AlugaMeCar.AlugaMeCar.model;
 
 import jakarta.persistence.Entity;
