@@ -1,4 +1,4 @@
-package com.AlugaMeCar.AlugaMeCar.Repository;
+package com.AlugaMeCar.AlugaMeCar.repository;
 
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
