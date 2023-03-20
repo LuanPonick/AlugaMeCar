@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/cliente")
 public class ClienteRestController {
@@ -16,10 +18,13 @@ public class ClienteRestController {
     private ClienteService clienteService;
 
     @GetMapping(value = "/{id}")
-    public ClienteDTO findById(@PathVariable Long id){
+    public ResponseEntity<Cliente> findById(@PathVariable Long id) {
         return clienteService.getById(id);
     }
-
+    @GetMapping(value = "/")
+    public ResponseEntity<List<ClienteDTO>> findAll(){
+        return clienteService.getAll();
+    }
     @PostMapping(value = "/")
     public ResponseEntity<Cliente> saveById(@RequestBody Cliente entity){
         return clienteService.save(entity);
@@ -30,7 +35,7 @@ public class ClienteRestController {
         return clienteService.deleteById(id);
     }
 
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<Cliente> alterById( @RequestBody Cliente c){
-//    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Cliente> alterById( @RequestBody Cliente c){
+    }
 }

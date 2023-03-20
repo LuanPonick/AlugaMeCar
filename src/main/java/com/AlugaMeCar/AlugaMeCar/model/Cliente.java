@@ -1,5 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
+import com.AlugaMeCar.AlugaMeCar.dto.ClienteDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,5 +35,9 @@ public class Cliente {
               ", senha='" + senha + '\'' +
               ", telefone='" + telefone + '\'' +
               '}';
+   }
+   public ClienteDTO toDTO(){
+      return new ClienteDTO(nome,sobrenome,data_nascimento,email,telefone);
+
    }
 }
