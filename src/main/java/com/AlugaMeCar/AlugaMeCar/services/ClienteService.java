@@ -4,6 +4,8 @@ import com.AlugaMeCar.AlugaMeCar.dto.ClienteDTO;
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
 import com.AlugaMeCar.AlugaMeCar.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,5 +17,9 @@ public class ClienteService {
         Cliente entity = clienteRepository.findById(id).get();
         ClienteDTO cli = new ClienteDTO(entity);
         return cli;
+    }
+    public ResponseEntity<Cliente> save(Cliente entity){
+        Cliente reposta = clienteRepository.save(entity);
+        return new ResponseEntity<Cliente>(reposta, HttpStatus.CREATED);
     }
 }
