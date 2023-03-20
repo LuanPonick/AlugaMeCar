@@ -1,5 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.dto;
 
+import com.AlugaMeCar.AlugaMeCar.model.Endereco;
 import com.AlugaMeCar.AlugaMeCar.model.Locacao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +14,8 @@ import lombok.Setter;
 public class LocacaoDTO {
     String dataRetirada;
     String dataDevolucao;
-    String localRetirada;
-    String localDevolucao;
+    Endereco localRetirada;
+    Endereco localDevolucao;
 
     public LocacaoDTO(Locacao entity) {
         this.dataRetirada = entity.getDataRetirada();

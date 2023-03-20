@@ -1,6 +1,7 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
@@ -12,13 +13,19 @@ import lombok.*;
 @Entity
 public class Locacao {
     @Id
-    Long idLocacao;
-    Long idCliente;
-    Long idCarro;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idLocacao;
+    @NotBlank
+    private Long idCliente;
+    @NotBlank
+    @OneToOne
+    private Carro carro;
     //@Column(name = "Data_Retirada")
-    String dataRetirada;
-    String dataDevolucao;
-    String localRetirada;
-    String localDevolucao;
+    private String dataRetirada;
+    @NotBlank
+    private String dataDevolucao;
+    @NotBlank
+    private Endereco localRetirada;
+    @NotBlank
+    private Endereco localDevolucao;
 }
