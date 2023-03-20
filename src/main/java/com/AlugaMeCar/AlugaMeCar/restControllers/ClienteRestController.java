@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/cliente")
 public class ClienteRestController {
@@ -15,12 +17,16 @@ public class ClienteRestController {
     private ClienteService clienteService;
 
     @GetMapping(value = "/{id}")
-    public ClienteDTO findById(@PathVariable Long id){
+    public ResponseEntity<Cliente> findById(@PathVariable Long id) {
         return clienteService.getById(id);
     }
-
+    @GetMapping(value = "/")
+    public ResponseEntity<List<ClienteDTO>> findAll(){
+        return clienteService.getAll();
+    }
     @PostMapping(value = "/")
     public ResponseEntity<Cliente> save(@RequestBody Cliente entity){
         return clienteService.save(entity);
     }
+
 }
