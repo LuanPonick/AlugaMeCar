@@ -37,4 +37,12 @@ public class ClienteService {
         Cliente reposta = clienteRepository.save(entity);
         return new ResponseEntity<Cliente>(reposta, HttpStatus.CREATED);
     }
+    public ResponseEntity<Cliente> deleteById(Long id) {
+        if (clienteRepository.existsById(id)){
+            clienteRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
