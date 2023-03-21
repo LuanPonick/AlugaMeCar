@@ -1,5 +1,7 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
+import com.AlugaMeCar.AlugaMeCar.dto.EnderecoDTO;
+import com.AlugaMeCar.AlugaMeCar.dto.LocacaoDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -30,4 +32,27 @@ public class Locacao {
     private List<Carro> idcarro;
     @OneToOne
     private Cliente idCliente;
+    public LocacaoDTO toDTO(){
+        return new LocacaoDTO(this.dataRetirada,this.dataDevolucao,this.localRetirada,this.localDevolucao);
+    }
+
+    /*
+    {
+      "nome": "",
+      "sobrenome": "",
+      "data_nascimento": "",
+      "email": "",
+      "senha": "",
+      "telefone": "",
+      "endereco_id": "",
+      "idLocacao": [
+        {
+          "idLocacao": null
+        },
+        {
+          "idLocacao": null
+        }
+      ]
+    }
+     */
 }

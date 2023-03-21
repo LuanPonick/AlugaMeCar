@@ -1,5 +1,7 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
+import com.AlugaMeCar.AlugaMeCar.dto.EmpresaDTO;
+import com.AlugaMeCar.AlugaMeCar.dto.EnderecoDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +21,16 @@ public class Endereco {
     @Column(name = "numero_casa")
     private String numeroCasa;
     private String pais;
-
-
+    public EnderecoDTO toDTO(){
+        return new EnderecoDTO(this.cidade,this.bairro,this.numeroCasa,this.pais);
+    }
+/*
+    {
+      "cidade": "",
+      "bairro": "",
+      "numeroCasa": "",
+      "pais": ""
+    }
+ */
 
 }

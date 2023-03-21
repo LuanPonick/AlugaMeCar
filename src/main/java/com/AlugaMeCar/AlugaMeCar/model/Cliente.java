@@ -33,11 +33,36 @@ public class Cliente {
    private String telefone;
    @OneToOne
    private Endereco endereco;
-   @ManyToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "fk_loc_cli")
-   private Locacao idLocacao;
+   @OneToMany
+   private List<Locacao> idLocacao;
    public ClienteDTO toDTO(){
       return new ClienteDTO(nome,sobrenome,data_nascimento,email,telefone);
    }
 
+   /*
+   {
+     "nome": "",
+     "sobrenome": "",
+     "data_nascimento": "",
+     "email": "",
+     "senha": "",
+     "telefone": "",
+     "endereco_id": "",
+     "idLocacao": []
+}
+{
+  "nome": "",
+  "sobrenome": "",
+  "data_nascimento": "",
+  "email": "",
+  "senha": "",
+  "telefone": "",
+  "endereco_id": "",
+  "idLocacao": [
+    {
+      "id_locacao": "1"
+    }
+  ]
+}
+    */
 }

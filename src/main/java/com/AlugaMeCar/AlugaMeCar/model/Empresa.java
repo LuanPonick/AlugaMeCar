@@ -1,10 +1,11 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.AlugaMeCar.AlugaMeCar.dto.ClienteDTO;
+import com.AlugaMeCar.AlugaMeCar.dto.EmpresaDTO;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,7 +17,22 @@ public class Empresa {
     @Id
     private Long idEmpresa;
     private String telefone;
-    @ManyToOne
-    @JoinColumn(name = "fk_emp_car")
-    private Carro idcarro;
+    @OneToMany
+    private List<Carro> idcarro;
+    @OneToMany
+    private List<Locacao> idLocacao;
+    public EmpresaDTO toDTO(){
+        return new EmpresaDTO(this.telefone,this.idcarro,this.idLocacao);
+    }
+    /*
+
+        {
+          "telefone": "null",
+          "carro": [
+            {
+              "idcarro": {}
+            }
+          ]
+        }
+     */
 }

@@ -1,5 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.services;
 
+import com.AlugaMeCar.AlugaMeCar.dto.EmpresaDTO;
 import com.AlugaMeCar.AlugaMeCar.dto.EnderecoDTO;
 import com.AlugaMeCar.AlugaMeCar.model.Empresa;
 import com.AlugaMeCar.AlugaMeCar.model.Endereco;
@@ -9,11 +10,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
+    public ResponseEntity<List<EnderecoDTO>> getAll(){
+        List<EnderecoDTO> entityDTOS = new ArrayList<>();
+        for (Endereco endereco : enderecoRepository.findAll()){
+            entityDTOS.add(endereco.toDTO());
+        }
+        return ResponseEntity.ok().body(entityDTOS);
+
+//        return ResponseEntity.ok().body(clienteRepository.findAll()
+//                .stream()
+//                .map(cliente -> cliente.toDTO())
+//                .collect(Collectors.toList()));
+    }
     public EnderecoDTO getById(Long id){
         Endereco entity = enderecoRepository.findById(id).get();
         EnderecoDTO end = new EnderecoDTO(entity);

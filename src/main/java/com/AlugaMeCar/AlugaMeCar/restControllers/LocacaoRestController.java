@@ -1,5 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.restControllers;
 
+import com.AlugaMeCar.AlugaMeCar.dto.CarroDTO;
 import com.AlugaMeCar.AlugaMeCar.dto.LocacaoDTO;
 import com.AlugaMeCar.AlugaMeCar.model.Endereco;
 import com.AlugaMeCar.AlugaMeCar.model.Locacao;
@@ -8,12 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/locacao")
 public class LocacaoRestController {
     @Autowired
     private LocacaoService locacaoService;
-
+    @GetMapping(value = "/")
+    public ResponseEntity<List<LocacaoDTO>> findAll(){
+        return locacaoService.getAll();
+    }
     @GetMapping(value = "/{id}")
     public LocacaoDTO findById(@PathVariable Long id){
         return locacaoService.getById(id);

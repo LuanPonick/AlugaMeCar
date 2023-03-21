@@ -1,6 +1,8 @@
 
 package com.AlugaMeCar.AlugaMeCar.model;
 
+import com.AlugaMeCar.AlugaMeCar.dto.CarroDTO;
+import com.AlugaMeCar.AlugaMeCar.dto.ClienteDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -34,6 +36,9 @@ public class Carro {
     private Locacao idLocacao;
     @OneToOne
     private Empresa idEmpresa;
+    public CarroDTO toDTO(){
+        return new CarroDTO(this.modelo,this.cor,this.placa,this.precoFIP,this.marca);
+    }
     /*
     {
         "modelo": "teste",

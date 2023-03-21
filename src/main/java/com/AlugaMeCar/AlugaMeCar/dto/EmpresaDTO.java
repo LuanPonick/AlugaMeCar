@@ -23,7 +23,7 @@ public class EmpresaDTO {
 
     public EmpresaDTO(Empresa entity){
         this.telefone = entity.getTelefone();
-//        this.idcarros = entity.getIdcarros();
-//        this.locacaos = entity.getLocacaos();
+        this.idcarros = entity.toDTO().getIdcarros();
+        this.locacaos = entity.toDTO().getLocacaos();
     }
 }
