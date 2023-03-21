@@ -1,7 +1,11 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -10,15 +14,20 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class Locacao {
     @Id
-    Long idLocacao;
-    Long idCliente;
-    Long idCarro;
-
-    //@Column(name = "Data_Retirada")
-    String dataRetirada;
-    String dataDevolucao;
-    String localRetirada;
-    String localDevolucao;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_locacao")
+    private Long idLocacao;
+    private String dataRetirada;
+    private String dataDevolucao;
+    @OneToOne
+    private Endereco localRetirada;
+    @OneToOne
+    private Endereco localDevolucao;
+    @OneToMany
+    private List<Carro> idcarro;
+    @OneToOne
+    private Cliente idCliente;
 }

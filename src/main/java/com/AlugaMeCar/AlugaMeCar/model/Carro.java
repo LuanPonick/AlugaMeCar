@@ -1,8 +1,8 @@
 
 package com.AlugaMeCar.AlugaMeCar.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -11,12 +11,28 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
+@Data
 public class Carro {
     @Id
-    Long idCarro;
-    String modelo;
-    String cor;
-    String placa;
-    double precoFIP;
-    String marca;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_carro")
+    private Long idCarro;
+
+    @NotBlank
+    private String modelo;
+    @NotBlank
+    private String cor;
+    @NotBlank
+    private String placa;
+    @NotBlank
+    @Column(name = "preco_fip")
+    private double precoFIP;
+    @NotBlank
+    private String marca;
+    @OneToOne
+    private Locacao idLocacao;
+    @OneToOne
+    private Empresa idEmpresa;
+
 }

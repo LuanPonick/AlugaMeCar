@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,10 +28,16 @@ public class ClienteService {
         }
     }
     public ResponseEntity<List<ClienteDTO>> getAll(){
-        return ResponseEntity.ok().body(clienteRepository.findAll()
-                .stream()
-                .map(cliente -> cliente.toDTO())
-                .collect(Collectors.toList()));
+        List<ClienteDTO> clienteDTOS = new ArrayList<>();
+        for (Cliente cliente : clienteRepository.findAll()){
+            clienteDTOS.add(cliente.toDTO());
+        }
+        return ResponseEntity.ok().body(clienteDTOS);
+
+//        return ResponseEntity.ok().body(clienteRepository.findAll()
+//                .stream()
+//                .map(cliente -> cliente.toDTO())
+//                .collect(Collectors.toList()));
     }
 
     public ResponseEntity<Cliente> save(Cliente entity){
