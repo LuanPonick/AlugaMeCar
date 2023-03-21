@@ -33,7 +33,8 @@ public class Cliente {
    private String telefone;
    @OneToOne
    private Endereco endereco;
-   @OneToMany
+   @ManyToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "fk_loc_cli")
    private Locacao idLocacao;
    public ClienteDTO toDTO(){
       return new ClienteDTO(nome,sobrenome,data_nascimento,email,telefone);
