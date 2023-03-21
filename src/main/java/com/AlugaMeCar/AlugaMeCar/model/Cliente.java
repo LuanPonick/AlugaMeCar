@@ -13,12 +13,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@ToString
 @Table(name = "CLIENTE")
 public class Cliente {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int idCliente;
+   @Column(name = "id_cliente")
+   private Long idCliente;
    @NotBlank
    private String nome;
    @NotBlank
@@ -31,9 +31,13 @@ public class Cliente {
    private String senha;
    @NotBlank
    private String telefone;
-   @OneToMany
-   private List<Locacao> locacao;
+   @OneToOne
+   private Endereco endereco;
+   @ManyToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "fk_loc_cli")
+   private Locacao idLocacao;
    public ClienteDTO toDTO(){
       return new ClienteDTO(nome,sobrenome,data_nascimento,email,telefone);
    }
+
 }

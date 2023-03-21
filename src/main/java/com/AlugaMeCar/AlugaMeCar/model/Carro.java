@@ -11,20 +11,30 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
+@Data
 public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCarro;
-    @OneToOne
-    private Locacao locacao;
+    @Column(name = "id_carro")
+    private Long idCarro;
+
     @NotBlank
-    String modelo;
+    private String modelo;
     @NotBlank
-    String cor;
+    private String cor;
     @NotBlank
-    String placa;
+    private String placa;
     @NotBlank
-    double precoFIP;
+    @Column(name = "preco_fip")
+    private double precoFIP;
     @NotBlank
-    String marca;
+    private String marca;
+
+    @JoinColumn(referencedColumnName = "id_locacao")
+    private Locacao idLocacao;
+
+
+    //private Empresa idEmpresa;
+
 }

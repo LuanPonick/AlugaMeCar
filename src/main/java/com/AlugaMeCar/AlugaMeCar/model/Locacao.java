@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.Date;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -11,21 +14,21 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class Locacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_locacao")
     private Long idLocacao;
-    @NotBlank
-    private Long idCliente;
-    @NotBlank
-    @OneToOne
-    private Carro carro;
-    //@Column(name = "Data_Retirada")
     private String dataRetirada;
-    @NotBlank
     private String dataDevolucao;
-    @NotBlank
+    @OneToOne
     private Endereco localRetirada;
-    @NotBlank
+    @OneToOne
     private Endereco localDevolucao;
+    @OneToOne
+    private List<Carro> idcarro;
+
+    @OneToOne
+    private List<Cliente> idCliente;
 }

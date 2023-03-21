@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainPageController {
     @GetMapping
     public String home(){
+        System.out.println("#### \n\n\n\n\n SARVE \n\n\n\n\n ####");
         return "index";
     }
 

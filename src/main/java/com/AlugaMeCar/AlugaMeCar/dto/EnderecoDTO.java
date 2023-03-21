@@ -20,7 +20,7 @@ public class EnderecoDTO {
     public EnderecoDTO(Endereco entity) {
         this.cidade = entity.getCidade();
         this.bairro = entity.getBairro();
-        this.numero_Casa = entity.getNumero_Casa();
+        this.numero_Casa = entity.getNumeroCasa();
         this.pais = entity.getPais();
     }
 }

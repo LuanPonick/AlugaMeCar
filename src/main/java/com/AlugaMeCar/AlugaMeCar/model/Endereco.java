@@ -1,7 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -12,15 +11,15 @@ import lombok.*;
 @Entity
 public class Endereco {
     @Id
-    Long idEnderoco;
-    Long idCliente;
-    Long idCarro;
-    Long idEmpresa;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEnderoco;
 
-    String cidade;
-    String bairro;
-    String numero_Casa;
-    String pais;
+    private String cidade;
+    private String bairro;
+    @Column(name = "numero_casa")
+    private String numeroCasa;
+    private String pais;
+
 
 
 }
