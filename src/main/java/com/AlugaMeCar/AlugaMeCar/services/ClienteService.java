@@ -52,4 +52,9 @@ public class ClienteService {
             return ResponseEntity.notFound().build();
         }
     }
+    public ResponseEntity<Cliente> reUpdateById(Cliente cliente,Long id){
+        cliente.setIdCliente(id);
+        Cliente clienteAtualizado = clienteRepository.save(cliente);
+        return new ResponseEntity<Cliente>(clienteAtualizado, HttpStatus.OK);
+    }
 }

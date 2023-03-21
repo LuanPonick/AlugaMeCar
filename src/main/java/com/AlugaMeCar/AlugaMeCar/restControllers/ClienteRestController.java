@@ -36,6 +36,7 @@ public class ClienteRestController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Cliente> alterById( @RequestBody Cliente c){
+    public ResponseEntity<Cliente> alterById(@RequestBody Cliente entity,@PathVariable("id") Long id){
+        return clienteService.reUpdateById(entity,id);
     }
 }

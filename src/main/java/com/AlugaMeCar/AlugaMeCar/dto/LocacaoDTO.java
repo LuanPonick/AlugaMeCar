@@ -14,14 +14,14 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LocacaoDTO {
-//    String dataRetirada;
-//    String dataDevolucao;
+    String dataRetirada;
+    String dataDevolucao;
     Endereco localRetirada;
     Endereco localDevolucao;
 
     public LocacaoDTO(Locacao entity) {
-//        this.dataRetirada = entity.getDataRetirada();
-//        this.dataDevolucao = entity.getDataDevolucao();
+        this.dataRetirada = entity.getDataRetirada();
+        this.dataDevolucao = entity.getDataDevolucao();
         this.localRetirada = entity.getLocalRetirada();
         this.localDevolucao = entity.getLocalDevolucao();
     }

@@ -34,5 +34,15 @@ public class Carro {
     private Locacao idLocacao;
     @OneToOne
     private Empresa idEmpresa;
-
+    /*
+    {
+        "modelo": "teste",
+        "cor": "vermelho",
+        "placa": "12312312",
+        "preco_fip": 20000,
+        "marca": "teste",
+        "idLocacao": "null",
+        "idEmpresa": "null"
+    }
+    */
 }
