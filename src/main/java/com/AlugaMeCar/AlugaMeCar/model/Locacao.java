@@ -26,9 +26,8 @@ public class Locacao {
     private Endereco localRetirada;
     @OneToOne
     private Endereco localDevolucao;
-    @OneToOne
+    @OneToMany
     private List<Carro> idcarro;
-
     @OneToOne
-    private List<Cliente> idCliente;
+    private Cliente idCliente;
 }

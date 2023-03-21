@@ -30,11 +30,9 @@ public class Carro {
     private double precoFIP;
     @NotBlank
     private String marca;
-
-    @JoinColumn(referencedColumnName = "id_locacao")
+    @OneToOne
     private Locacao idLocacao;
-
-
-    //private Empresa idEmpresa;
+    @OneToOne
+    private Empresa idEmpresa;
 
 }
