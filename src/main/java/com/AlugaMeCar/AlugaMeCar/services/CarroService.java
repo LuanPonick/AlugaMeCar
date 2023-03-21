@@ -2,6 +2,7 @@ package com.AlugaMeCar.AlugaMeCar.services;
 
 import com.AlugaMeCar.AlugaMeCar.dto.CarroDTO;
 import com.AlugaMeCar.AlugaMeCar.model.Carro;
+import com.AlugaMeCar.AlugaMeCar.model.Cliente;
 import com.AlugaMeCar.AlugaMeCar.repositories.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,10 @@ public class CarroService {
             return ResponseEntity.notFound().build();
         }
 
+    }
+    public ResponseEntity<Carro> reUpDate(Carro entity, Long id){
+        entity.setIdCarro(id);
+        Carro entityUpdate = carroRepository.save(entity);
+        return new ResponseEntity<Carro>(entityUpdate, HttpStatus.OK);
     }
 }
