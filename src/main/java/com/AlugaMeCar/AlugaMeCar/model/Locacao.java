@@ -31,12 +31,21 @@ public class Locacao {
     @OneToMany
     private List<Carro> idcarro;
     @OneToOne
+    @JoinColumn
     private Cliente idCliente;
     public LocacaoDTO toDTO(){
         return new LocacaoDTO(this.dataRetirada,this.dataDevolucao,this.localRetirada,this.localDevolucao);
     }
 
     /*
+    {
+      "id_carro": 1
+    }
+"id_cliente": 1
+
+
+
+
     {
       "nome": "",
       "sobrenome": "",

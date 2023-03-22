@@ -60,7 +60,7 @@ public class Cliente {
   "endereco_id": "",
   "idLocacao": [
     {
-      "id_locacao": "1"
+      "id_locacao": null
     }
   ]
 }

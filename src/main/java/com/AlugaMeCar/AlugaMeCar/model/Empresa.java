@@ -15,11 +15,13 @@ import java.util.List;
 @Entity
 public class Empresa {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idEmpresa;
     private String telefone;
     @OneToMany
     private List<Carro> idcarro;
     @OneToMany
+
     private List<Locacao> idLocacao;
     public EmpresaDTO toDTO(){
         return new EmpresaDTO(this.telefone,this.idcarro,this.idLocacao);

@@ -21,16 +21,11 @@ public class Carro {
     @Column(name = "id_carro")
     private Long idCarro;
 
-    @NotBlank
     private String modelo;
-    @NotBlank
     private String cor;
-    @NotBlank
     private String placa;
-    @NotBlank
     @Column(name = "preco_fip")
     private double precoFIP;
-    @NotBlank
     private String marca;
     @OneToOne
     private Locacao idLocacao;
