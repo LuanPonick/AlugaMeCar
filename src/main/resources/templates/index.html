@@ -1,10 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../static/style.css">
+
 </head>
-<body>
-  <h1>teste</h1>
+<body class="p-3 m-0 border-0 bd-example">
+   
+<header>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <h1>Alugama Car</h1>
+    <br>
+    <h2>A procura de carro<br>Está no site Certo!</h2>
+    <button type="button" class="btn-log">Login</button>
+    <div class="filter"></div><div class="filter2"></div><div class="filter3"></div>
+</header>
+<br>
+<main>
+    <p class="automovel-txt">
+        Qual automóvel deseja alugar?
+    </p>
+    <div class="ordem-auto">
+        <button type="button" class="btn">Economico</button>
+        <button type="button" class="btn">Urbano</button>
+        <button type="button" class="btn">Alto Padrão</button>
+        <button type="button" class="btn">Luxo</button>
+        <button type="button" class="btn">Super Luxo</button>
+    </div>
+    <div class="form" style="--bs-columns: 5;">
+        <div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Localização</option>
+                <option value="1">Joinville</option>
+                <option value="2">São Paulo</option>
+                <option value="3">Rio de Janeiro</option>
+            </select>
+        </div>
+        <div><input type="date"></div>
+        <div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Hora de Retirada</option>
+                <option value="1">8:00</option>
+                <option value="2">8:15</option>
+                <option value="3">8:20</option>
+            </select>
+        </div>
+        <div>
+            <input type="date">
+        </div>
+        <div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Hora de Devolução</option>
+                <option value="1">8:00</option>
+                <option value="2">8:15</option>
+                <option value="3">8:20</option>
+            </select>
+        </div>
+    </div>
+    <button type="button" class="btn-enviar">Enviar</button>
+</main>
+<footer>
+    &copy;Alugame Car 2023
+    <button type="button" class="btn">Mapa do Site</button>
+    <button type="button" class="btn">Termos Legais</button>
+    <button type="button" class="btn">Politica de Cookies</button>
+</footer>
+
 </body>
 </html>
