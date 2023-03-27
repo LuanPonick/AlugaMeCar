@@ -1,6 +1,7 @@
 package com.AlugaMeCar.AlugaMeCar.dto;
 
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
+import com.AlugaMeCar.AlugaMeCar.model.Endereco;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class ClienteDTO {
     private String data_nascimento;
     private String email;
     private String telefone;
+    private Endereco endereco;
 
     public ClienteDTO(Cliente cli) {
         nome = cli.getNome();
@@ -23,6 +25,7 @@ public class ClienteDTO {
         data_nascimento = cli.getData_nascimento();
         email = cli.getEmail();
         telefone = cli.getTelefone();
+        endereco = cli.getEndereco();
     }
 
 }

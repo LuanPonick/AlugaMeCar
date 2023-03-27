@@ -16,12 +16,17 @@ import java.util.List;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_empresa")
     private Long idEmpresa;
+    @Column(name="telefone")
     private String telefone;
-    @OneToMany
-    private List<Carro> idcarro;
-    @OneToMany
 
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_empresa")
+    private Endereco enderecoEmpresa;
+    @OneToMany(mappedBy = "idCarro",fetch = FetchType.EAGER)
+    private List<Carro> idcarro;
+    @OneToMany(mappedBy = "idEmpresas",fetch = FetchType.EAGER)
     private List<Locacao> idLocacao;
     public EmpresaDTO toDTO(){
         return new EmpresaDTO(this.telefone,this.idcarro,this.idLocacao);

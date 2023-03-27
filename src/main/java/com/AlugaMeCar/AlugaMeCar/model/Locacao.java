@@ -1,13 +1,8 @@
 package com.AlugaMeCar.AlugaMeCar.model;
 
-import com.AlugaMeCar.AlugaMeCar.dto.EnderecoDTO;
 import com.AlugaMeCar.AlugaMeCar.dto.LocacaoDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.util.Date;
-import java.util.List;
 
 
 @Getter
@@ -24,28 +19,31 @@ public class Locacao {
     private Long idLocacao;
     private String dataRetirada;
     private String dataDevolucao;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "local_retirada")
     private Endereco localRetirada;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "local_devolucao")
     private Endereco localDevolucao;
-    @OneToMany
-    private List<Carro> idcarro;
-    @OneToOne
-    @JoinColumn
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente",nullable = false)
     private Cliente idCliente;
+    @ManyToOne
+    @JoinColumn(name = "id_Carro",nullable = false)
+    private Carro idCarro;
+    @ManyToOne
+    @JoinColumn(name = "id_empresa",nullable = false)
+    private Empresa idEmpresas;
     public LocacaoDTO toDTO(){
         return new LocacaoDTO(this.dataRetirada,this.dataDevolucao,this.localRetirada,this.localDevolucao);
     }
-
+}
     /*
     {
       "id_carro": 1
     }
 "id_cliente": 1
-
-
-
-
     {
       "nome": "",
       "sobrenome": "",
@@ -64,4 +62,3 @@ public class Locacao {
       ]
     }
      */
-}

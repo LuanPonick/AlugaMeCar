@@ -31,12 +31,15 @@ public class Cliente {
    private String senha;
    @NotBlank
    private String telefone;
-   @OneToOne
+
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "idEnderoco")
    private Endereco endereco;
-   @OneToMany
+
+   @OneToMany(mappedBy = "idCliente",fetch = FetchType.EAGER)
    private List<Locacao> idLocacao;
    public ClienteDTO toDTO(){
-      return new ClienteDTO(nome,sobrenome,data_nascimento,email,telefone);
+      return new ClienteDTO(nome,sobrenome,data_nascimento,email,telefone,endereco);
    }
 
    /*
@@ -57,7 +60,12 @@ public class Cliente {
   "email": "",
   "senha": "",
   "telefone": "",
-  "endereco_id": "",
+  "endereco":{
+      cidade:"",
+      bairro:"",
+      numeroCasa:"",
+      pais:""
+  },
   "idLocacao": [
     {
       "id_locacao": null
