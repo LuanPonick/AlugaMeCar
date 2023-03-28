@@ -53,8 +53,14 @@ public class ClienteService {
         }
     }
     public ResponseEntity<Cliente> reUpdateById(Cliente cliente,Long id){
-        cliente.setIdCliente(id);
-        Cliente clienteAtualizado = clienteRepository.save(cliente);
-        return new ResponseEntity<Cliente>(clienteAtualizado, HttpStatus.OK);
+        Optional<Cliente> optional = clienteRepository.findById(id);
+        if(optional.isPresent()){
+            cliente.setIdCliente(id);
+            Cliente clienteAtualizado = clienteRepository.save(cliente);
+            return new ResponseEntity<Cliente>(clienteAtualizado, HttpStatus.OK);
+
+        }else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

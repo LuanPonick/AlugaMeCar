@@ -2,6 +2,8 @@ package com.AlugaMeCar.AlugaMeCar.model;
 
 import com.AlugaMeCar.AlugaMeCar.dto.EmpresaDTO;
 import com.AlugaMeCar.AlugaMeCar.dto.EnderecoDTO;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,6 +13,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idEnderoco")
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

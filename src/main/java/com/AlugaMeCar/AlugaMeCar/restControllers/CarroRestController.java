@@ -6,6 +6,7 @@ import com.AlugaMeCar.AlugaMeCar.model.Carro;
 import com.AlugaMeCar.AlugaMeCar.model.Cliente;
 import com.AlugaMeCar.AlugaMeCar.services.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class CarroRestController {
 
     @PostMapping(value = "/")
     public ResponseEntity<Carro> saveById(@RequestBody Carro entity){
+
         return carroService.save(entity);
     }
 

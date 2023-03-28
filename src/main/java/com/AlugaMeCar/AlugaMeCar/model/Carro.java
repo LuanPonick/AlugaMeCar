@@ -3,20 +3,24 @@ package com.AlugaMeCar.AlugaMeCar.model;
 
 import com.AlugaMeCar.AlugaMeCar.dto.CarroDTO;
 import com.AlugaMeCar.AlugaMeCar.dto.ClienteDTO;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
 
-@Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+
 @ToString
-@Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idCarro")
 public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +37,18 @@ public class Carro {
     private Boolean emUso;
 
     @OneToMany(mappedBy = "idCarro",fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "locacao-carro")
     private List<Locacao> idLocacao;
-
-    @ManyToOne
-    @JoinColumn(name = "id_empresa",nullable = false)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "idcarro")
+    @JsonBackReference(value = "empresa-carro")
     private Empresa idEmpresa;
     public CarroDTO toDTO(){
-        return new CarroDTO(this.modelo,this.cor,this.placa,this.precoFIP,this.marca);
+        return new CarroDTO(this.modelo,this.cor,this.placa,this.precoFIP,this.marca,this.idEmpresa);
     }
+
+
+
     /*
     {
         "modelo": "teste",

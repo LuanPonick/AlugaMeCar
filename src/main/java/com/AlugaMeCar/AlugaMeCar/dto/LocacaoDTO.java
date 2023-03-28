@@ -1,7 +1,6 @@
 package com.AlugaMeCar.AlugaMeCar.dto;
 
-import com.AlugaMeCar.AlugaMeCar.model.Endereco;
-import com.AlugaMeCar.AlugaMeCar.model.Locacao;
+import com.AlugaMeCar.AlugaMeCar.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,16 +12,25 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+
 public class LocacaoDTO {
-    String dataRetirada;
-    String dataDevolucao;
-    Endereco localRetirada;
-    Endereco localDevolucao;
+    private String dataRetirada;
+    private String dataDevolucao;
+    private Endereco localRetirada;
+    private Endereco localDevolucao;
+    private Cliente idCliente;
+    private Carro idCarro;
+    private Empresa idEmpresas;
 
     public LocacaoDTO(Locacao entity) {
         this.dataRetirada = entity.getDataRetirada();
         this.dataDevolucao = entity.getDataDevolucao();
         this.localRetirada = entity.getLocalRetirada();
         this.localDevolucao = entity.getLocalDevolucao();
+        this.idCliente = entity.getIdCliente();
+        this.idCarro = entity.getIdCarro();
+        this.idEmpresas = entity.getIdEmpresas();
+
     }
 }

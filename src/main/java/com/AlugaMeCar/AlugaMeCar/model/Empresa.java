@@ -2,6 +2,10 @@ package com.AlugaMeCar.AlugaMeCar.model;
 
 import com.AlugaMeCar.AlugaMeCar.dto.ClienteDTO;
 import com.AlugaMeCar.AlugaMeCar.dto.EmpresaDTO;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +17,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idEmpresa")
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,10 +31,15 @@ public class Empresa {
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_empresa")
     private Endereco enderecoEmpresa;
-    @OneToMany(mappedBy = "idCarro",fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "idEmpresa",cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "empresa-carro")
+    @JsonIgnore(value = true)
     private List<Carro> idcarro;
     @OneToMany(mappedBy = "idEmpresas",fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "empresa-locacao")
     private List<Locacao> idLocacao;
+
     public EmpresaDTO toDTO(){
         return new EmpresaDTO(this.telefone,this.idcarro,this.idLocacao);
     }
