@@ -1,170 +1,75 @@
 @charset "utf-8";
 
-body{
-    background-image: url(../assets/Images/GettyImages-1326118573-1440x864.jpg);
-    height: 700px;
-    background-position: center;
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 250%;
+    text-align: center;
+    margin: 1%;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 200%;
+    margin-left: 3%;
+    margin-top: 12%;
+}
+
+header {
+    background-image: url(../assets/Images/imagem-de-fundo.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    height: 400px;
+    background-size:cover;
+    color: white;
+}
+
+body{
+    align-items: center;
     background-color: black;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
-.ordem-auto{
-    padding: 30%;
-    color: white;
-    display: flex;
+main {
+    padding: 5%;
+    background-color: #ffffff;
+    margin: 5%;
 }
-
-.btn{
-    color: white;
-    background: none;
-    border: none;
-    border-radius: 5px;
-    padding: 1%;
-    display: inline;
-}
-
-main{
-    position: absolute;
-}
-
-.filter {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.945);
-    width: 100%;
-    height: 500px;
-    margin-top: 20%;
-}
-
-/* Botão Eviar */
 
 .btn-log{
-    /* botão */
-
-position: absolute;
-background: #04D000;
-border-radius: 5px;
-border: none;
-padding: 5px;
-
-/* Login */
-
-position: absolute;
-left: 111px;
-top: 231px;
-font-family: 'Chivo';
-font-style: normal;
-font-size: 20px;
-line-height: 24px;
-text-align: center;
-color: #FFFFFF;
-
-}
-
-.btn-enviar{
-    position: absolute;
-    width: 550px;
-    height: 67px;
-    left: 460px;
-    top: 633px;
-    border: none;
+    margin-left: 85%;
+    width: 104px;
+    height: 33px;
+    left: 1926px;
+    top: 257px;
     background: #04D000;
     border-radius: 5px;
+    border: none;
 
-/* Texto */
+    /* Login */
 
-font-family: 'Chivo';
-font-style: normal;
-font-weight: 400;
-font-size: 40px;
-line-height: 48px;
-text-align: center;
-color: #FFFFFF;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    text-align: center;
+    color: #FFFFFF;
 }
 
-.form{
+.qual-car{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 150%;
+    margin-top: -5%;
+    margin-left: -3%;
+}
+
+.box{
     display: flex;
+    background-color: aqua;
     padding: 1%;
+    margin: 2%;
+}
+
+select{
+    display: block;
 }
 
 footer {
-    /* © Alugame Car 2023 */
-
-background-color: black;
-position: absolute;
-width: 220.92px;
-height: 24px;
-left: 38px;
-top: 953px;
-
-font-family: 'Chivo';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-text-align: center;
-color: #FFFFFF;
-
-/* Mapa do Site Termos Legais de Cookies */
-
-position: absolute;
-width: 574.18px;
-height: 42px;
-left: 242.1px;
-top: 951px;
-
-font-family: 'Chivo';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-text-align: center;
-color: #FFFFFF;
-mix-blend-mode: normal;
-}
-
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-HTML5 display-role reset for older browsers 
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    color: white;
 }

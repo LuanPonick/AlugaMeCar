@@ -2,42 +2,47 @@
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" href="../static/style.css">
-
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script> -->
 </head>
-<body class="p-3 m-0 border-0 bd-example">
-   
 <header>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <h1>Alugama Car</h1>
-    <br>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- código para a acentuação não dar problema -->
+    
+    <h1>Alugame Car</h1>
+
     <h2>A procura de carro<br>Está no site Certo!</h2>
+    
     <button type="button" class="btn-log">Login</button>
-    <div class="filter"></div><div class="filter2"></div><div class="filter3"></div>
 </header>
 <br>
 <main>
-    <p class="automovel-txt">
+    <p class="qual-car">
         Qual automóvel deseja alugar?
     </p>
-    <div class="ordem-auto">
+    <div class="tipo-car">
         <button type="button" class="btn">Economico</button>
         <button type="button" class="btn">Urbano</button>
         <button type="button" class="btn">Alto Padrão</button>
         <button type="button" class="btn">Luxo</button>
         <button type="button" class="btn">Super Luxo</button>
     </div>
-    <div class="form" style="--bs-columns: 5;">
+    <div class="box">    
         <div>
-            <select class="form-select" aria-label="Default select example">
+            <select class="local" aria-label="Default select example">
                 <option selected>Localização</option>
                 <option value="1">Joinville</option>
                 <option value="2">São Paulo</option>
                 <option value="3">Rio de Janeiro</option>
             </select>
         </div>
-        <div><input type="date"></div>
+        <div >
+                <input type="date" class="data">
+        </div>
         <div>
-            <select class="form-select" aria-label="Default select example">
+            <select class="hora" aria-label="Default select example">
                 <option selected>Hora de Retirada</option>
                 <option value="1">8:00</option>
                 <option value="2">8:15</option>
@@ -45,10 +50,10 @@
             </select>
         </div>
         <div>
-            <input type="date">
+            <input type="date" class="data">
         </div>
         <div>
-            <select class="form-select" aria-label="Default select example">
+            <select class="hora1" aria-label="Default select example">
                 <option selected>Hora de Devolução</option>
                 <option value="1">8:00</option>
                 <option value="2">8:15</option>
@@ -64,6 +69,5 @@
     <button type="button" class="btn">Termos Legais</button>
     <button type="button" class="btn">Politica de Cookies</button>
 </footer>
-
 </body>
 </html>
