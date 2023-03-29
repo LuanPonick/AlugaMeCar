@@ -18,9 +18,9 @@ import java.util.List;
 @Getter
 
 @ToString
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idCarro")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "idCarro")
 public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,28 +36,13 @@ public class Carro {
     @Column(name = "em_uso")
     private Boolean emUso;
 
-    @OneToMany(mappedBy = "idCarro",fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "locacao-carro")
-    private List<Locacao> idLocacao;
+    @OneToMany(mappedBy = "idCarro",fetch = FetchType.EAGER)// AGR NAO
+    @JsonManagedReference(value = "locacao-carro")// AGR NAO
+    private List<Locacao> idLocacao;// AGR NAO
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "idcarro")
-    @JsonBackReference(value = "empresa-carro")
     private Empresa idEmpresa;
     public CarroDTO toDTO(){
-        return new CarroDTO(this.modelo,this.cor,this.placa,this.precoFIP,this.marca,this.idEmpresa);
+        return new CarroDTO(this.modelo,this.cor,this.placa,this.precoFIP,this.marca,this.idEmpresa,this.idLocacao);
     }
-
-
-
-    /*
-    {
-        "modelo": "teste",
-        "cor": "vermelho",
-        "placa": "12312312",
-        "preco_fip": 20000,
-        "marca": "teste",
-        "idLocacao": "null",
-        "idEmpresa": "null"
-    }
-    */
 }

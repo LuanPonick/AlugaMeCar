@@ -17,9 +17,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idEmpresa")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "idEmpresa")
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,30 +28,18 @@ public class Empresa {
     @Column(name="telefone")
     private String telefone;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_empresa")
     private Endereco enderecoEmpresa;
 
     @OneToMany(mappedBy = "idEmpresa",cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "empresa-carro")
-    @JsonIgnore(value = true)
+    @JsonIgnore
     private List<Carro> idcarro;
     @OneToMany(mappedBy = "idEmpresas",fetch = FetchType.EAGER)
     @JsonManagedReference(value = "empresa-locacao")
     private List<Locacao> idLocacao;
 
     public EmpresaDTO toDTO(){
-        return new EmpresaDTO(this.telefone,this.idcarro,this.idLocacao);
+        return new EmpresaDTO(this.telefone,this.idcarro,this.idLocacao,this.enderecoEmpresa);
     }
-    /*
-
-        {
-          "telefone": "null",
-          "carro": [
-            {
-              "idcarro": {}
-            }
-          ]
-        }
-     */
 }

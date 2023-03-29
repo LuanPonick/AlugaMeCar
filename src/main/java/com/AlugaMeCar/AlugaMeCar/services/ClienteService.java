@@ -20,6 +20,8 @@ public class ClienteService {
 
     public ResponseEntity<Cliente> getById(Long id){
         Optional<Cliente> entity = clienteRepository.findById(id);
+        System.out.println(entity.get().toString());
+
         if(entity.isPresent()){
             return new ResponseEntity<Cliente>(entity.get(),HttpStatus.OK);
 

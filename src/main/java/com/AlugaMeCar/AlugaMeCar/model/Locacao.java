@@ -3,6 +3,7 @@ package com.AlugaMeCar.AlugaMeCar.model;
 import com.AlugaMeCar.AlugaMeCar.dto.LocacaoDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,9 +16,6 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @ToString
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idLocacao")
 public class Locacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,16 +25,13 @@ public class Locacao {
     private String dataDevolucao;
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "local_retirada")
-    @JsonIdentityInfo(scope = Endereco.class,property = "idEnderoco",generator = ObjectIdGenerators.PropertyGenerator.class)
     private Endereco localRetirada;
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "local_devolucao")
-    @JsonIdentityInfo(scope = Endereco.class,property = "idEnderoco",generator = ObjectIdGenerators.PropertyGenerator.class)
     private Endereco localDevolucao;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_cliente")
-
     @JsonBackReference(value = "cliente-locacao")
     @JsonIdentityInfo(scope = Cliente.class,property = "idCliente",generator = ObjectIdGenerators.PropertyGenerator.class)
     private Cliente idCliente;

@@ -13,9 +13,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idEnderoco")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "idEnderoco")
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +29,4 @@ public class Endereco {
     public EnderecoDTO toDTO(){
         return new EnderecoDTO(this.cidade,this.bairro,this.numeroCasa,this.pais);
     }
-/*
-    {
-      "cidade": "",
-      "bairro": "",
-      "numeroCasa": "",
-      "pais": ""
-    }
- */
-
 }
